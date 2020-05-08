@@ -1,64 +1,64 @@
-import React, { Component } from "react";
-import Header from "./Header";
-import Action from "./Action";
-import Options from "./Options";
-import AddOption from "./AddOption";
-import OptionModel from "./OptionModal";
-import "../styles/styles.scss";
+import React, { Component } from "react"
+import Header from "./Header"
+import Action from "./Action"
+import Options from "./Options"
+import AddOption from "./AddOption"
+import OptionModel from "./OptionModal"
+import "../styles/styles.scss"
 
 class IndecisionApp extends Component {
   state = {
-    options: ["op1", "op2", "op3"],
+    options: ["Do exercise", "Watch an anime episode", "Do homework"],
     selectOption: undefined
-  };
+  }
 
   handelAddOption = option => {
     if (!option) {
-      return "Enter Valid Input";
+      return "Enter Valid Input"
     } else if (this.state.options.indexOf(option) > -1) {
-      return "Option already there";
+      return "Option already there"
     }
     this.setState(prevState => ({
       options: prevState.options.concat([option])
-    }));
-  };
+    }))
+  }
 
   handlePick = () => {
-    console.log("clicked");
+    console.log("clicked")
     if (this.state.options) {
-      let index = Math.floor(Math.random() * this.state.options.length);
+      let index = Math.floor(Math.random() * this.state.options.length)
       this.setState({
         selectOption: this.state.options[index]
-      });
+      })
     } else {
-      alert("Create some Tasks to choose from");
+      alert("Create some Tasks to choose from")
     }
-    console.log(this.state.options);
-  };
+    console.log(this.state.options)
+  }
 
   handelDeleteOption = optionText => {
     this.setState(prevState => ({
       options: prevState.options.filter(option => option !== optionText)
-    }));
-  };
+    }))
+  }
 
   handelDeleteOptions = () => {
     this.setState(() => ({
       options: []
-    }));
-  };
+    }))
+  }
 
   CloseModal = () => {
     this.setState(() => ({
       selectOption: undefined
-    }));
-  };
+    }))
+  }
 
-  setButtonStatus = () => (this.state.options.length === 0 ? true : false);
+  setButtonStatus = () => (this.state.options.length === 0 ? true : false)
 
   render() {
-    let title = "IndecisionApp";
-    let subtitle = "Put your life in the hands of a computer";
+    let title = "IndecisionApp"
+    let subtitle = "Put your life in the hands of a computer"
 
     return (
       <div>
@@ -87,8 +87,8 @@ class IndecisionApp extends Component {
           />
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default IndecisionApp;
+export default IndecisionApp
